@@ -222,7 +222,7 @@ iot 개발자 c#/WinApp 리포지토리 2025
 
 ### C# 문법
 - 기본 문법 - C++, Java와 거의 동일. C++와의 차이점만 비교
-    1. 기본구조 및 주석 - [소스](./day02/Day02Study/SyntaxWinApp01/FrmMain.cs)
+    1. 기본구조 및 주석 - [소스](./day02/Day02Study/SysntaxWinApp01/FrmMain.cs)
         - 네임스페이스, 클래스, 메서드 
 
         ```cs
