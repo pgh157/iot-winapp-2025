@@ -9,36 +9,36 @@ namespace SyntaxWinApp03
 
         private void BtnMsg_Click(object sender, EventArgs e)
         {
-            // ºÐ±â¹®
-            // if else ¹®
-            if (TxtPain.Text == "¾Æ´Ï¿À")
+            // ï¿½Ð±â¹®
+            // if else ï¿½ï¿½
+            if (TxtPain.Text == "ï¿½Æ´Ï¿ï¿½")
             {
-                MessageBox.Show("º´¿øÀ» ¿Ö ¿Ô¾î¿ä. Áý¿¡°¡!");
+                MessageBox.Show("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ô¾ï¿½ï¿½. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!");
             }
-            else if (TxtPain.Text == "³×")
+            else if (TxtPain.Text == "ï¿½ï¿½")
             {
                 string PainPoint = CboPainPoint.SelectedItem.ToString();
 
-                // switch ¹®
+                // switch ï¿½ï¿½
                 switch (PainPoint)
                 {
-                    case "¸Ó¸®":
-                        MessageBox.Show("½Å°æ°ú·Î °©´Ï´Ù", "Áø·á°ú ¼±ÅÃ");
+                    case "ï¿½Ó¸ï¿½":
+                        MessageBox.Show("ï¿½Å°ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï´ï¿½", "ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
                         break;
-                    case "´«":
-                        MessageBox.Show("¾È°ú·Î °©´Ï´Ù", "Áø·á°ú ¼±ÅÃ");
+                    case "ï¿½ï¿½":
+                        MessageBox.Show("ï¿½È°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï´ï¿½", "ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
                         break;
-                    case "¸ñ":
-                        MessageBox.Show("ÀÌºñÀÎÈÄ°ú·Î °©´Ï´Ù", "Áø·á°ú ¼±ÅÃ");
+                    case "ï¿½ï¿½":
+                        MessageBox.Show("ï¿½Ìºï¿½ï¿½ï¿½ï¿½Ä°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï´ï¿½", "ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
                         break;
-                    case "ÄÚ":
-                        MessageBox.Show("ÀÌºñÀÎÈÄ°ú·Î °©´Ï´Ù", "Áø·á°ú ¼±ÅÃ");
+                    case "ï¿½ï¿½":
+                        MessageBox.Show("ï¿½Ìºï¿½ï¿½ï¿½ï¿½Ä°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï´ï¿½", "ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
                         break;
-                    case "°¡½¿":
-                        MessageBox.Show("³»°ú·Î °©´Ï´Ù", "Áø·á°ú ¼±ÅÃ");
+                    case "ï¿½ï¿½ï¿½ï¿½":
+                        MessageBox.Show("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï´ï¿½", "ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
                         break;
-                    case "¹è":
-                        MessageBox.Show("¼ÒÈ­°ú·Î °©´Ï´Ù", "Áø·á°ú ¼±ÅÃ");
+                    case "ï¿½ï¿½":
+                        MessageBox.Show("ï¿½ï¿½È­ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï´ï¿½", "ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
                         break;
 
                 }
@@ -48,17 +48,17 @@ namespace SyntaxWinApp03
 
         private void TxtPain_KeyPress(object sender, KeyPressEventArgs e)
         {
-            // Å°ÇÁ·¹½º¿¡¼­ ¿£ÅÍ¸¦ ÀÔ·ÂÇÏ¸é C, C++ if¹®°ú µ¿ÀÏ
+            // Å°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½Ô·ï¿½ï¿½Ï¸ï¿½ C, C++ ifï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             if (e.KeyChar == (char)Keys.Enter)
             {
-                MessageBox.Show(TxtPain.Text, "ÀÔ·Â°ª");
+                MessageBox.Show(TxtPain.Text, "ï¿½Ô·Â°ï¿½");
             }
         }
 
         private void CboPainPoint_SelectedIndexChanged(object sender, EventArgs e)
         {
             var selectedPoint = CboPainPoint.SelectedItem.ToString();
-            MessageBox.Show(selectedPoint, "ÅëÁõºÎÀ§");
+            MessageBox.Show(selectedPoint, "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -68,8 +68,8 @@ namespace SyntaxWinApp03
 
         private void BtnDisplay_Click(object sender, EventArgs e)
         {
-            TxtResult.Text = string.Empty;  // ÃÊ±âÈ­
-            // for¹® 
+            TxtResult.Text = string.Empty;  // ï¿½Ê±ï¿½È­
+            // forï¿½ï¿½ 
             for (int x = 2; x < 10; x++)
             {
                 for (int y = 1; y < 10; y++)
@@ -77,7 +77,7 @@ namespace SyntaxWinApp03
                     var result = x + "x" + y + "=" + (x * y);
                     TxtResult.Text += result + " ";
                 }
-                TxtResult.Text += "\r\n";   // ¿ø·¡ À©µµ¿ì´Â \r\nÀ» °°ÀÌ ½á¾ß ÇÔ
+                TxtResult.Text += "\r\n";   // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ \r\nï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½
             }
         }
 
@@ -86,17 +86,17 @@ namespace SyntaxWinApp03
         private void BtnWhile_Click(object sender, EventArgs e)
         {
             // 
-            // ¹«ÇÑ ¹Ýº¹
+            // ï¿½ï¿½ï¿½ï¿½ ï¿½Ýºï¿½
             while(true)
             {
-                MessageBox.Show("°è¼Ó > " + clickNum);
+                MessageBox.Show("ï¿½ï¿½ï¿½ > " + clickNum);
                 clickNum++;
 
                 if(clickNum == 10)
                 {
-                    break;  // ¹Ýº¹¹® Å»Ãâ for, foreach, while ¹®¿¡ »ç¿ë°¡´É
-                    // continue; µµ ÆÄ¾ÇÇÒ °Í
-                    // goto; ´Â ¿Ø¸¸ÇÏ¸é ¾²Áö ¸»°Í
+                    break;  // ï¿½Ýºï¿½ï¿½ï¿½ Å»ï¿½ï¿½ for, foreach, while ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ë°¡ï¿½ï¿½
+                    // continue; ï¿½ï¿½ ï¿½Ä¾ï¿½ï¿½ï¿½ ï¿½ï¿½
+                    // goto; ï¿½ï¿½ ï¿½Ø¸ï¿½ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
                 }
             }
         }

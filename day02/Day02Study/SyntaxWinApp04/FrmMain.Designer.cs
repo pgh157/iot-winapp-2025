@@ -31,13 +31,13 @@
             LblName = new Label();
             TxtName = new TextBox();
             LblAge = new Label();
-            TxtAge = new TextBox();
             LblGender = new Label();
             RdoMale = new RadioButton();
             RdoFemale = new RadioButton();
             BtnMsg = new Button();
             LblResult = new Label();
             TxtResul = new TextBox();
+            TxtAge = new MaskedTextBox();
             SuspendLayout();
             // 
             // LblName
@@ -53,7 +53,7 @@
             // 
             TxtName.Location = new Point(87, 12);
             TxtName.Name = "TxtName";
-            TxtName.Size = new Size(236, 23);
+            TxtName.Size = new Size(170, 23);
             TxtName.TabIndex = 1;
             // 
             // LblAge
@@ -61,16 +61,9 @@
             LblAge.AutoSize = true;
             LblAge.Location = new Point(12, 44);
             LblAge.Name = "LblAge";
-            LblAge.Size = new Size(62, 15);
+            LblAge.Size = new Size(58, 15);
             LblAge.TabIndex = 0;
-            LblAge.Text = "나이 입력:";
-            // 
-            // TxtAge
-            // 
-            TxtAge.Location = new Point(87, 41);
-            TxtAge.Name = "TxtAge";
-            TxtAge.Size = new Size(236, 23);
-            TxtAge.TabIndex = 2;
+            LblAge.Text = "생년월일:";
             // 
             // LblGender
             // 
@@ -129,16 +122,24 @@
             TxtResul.Size = new Size(485, 23);
             TxtResul.TabIndex = 5;
             // 
+            // TxtAge
+            // 
+            TxtAge.Location = new Point(87, 41);
+            TxtAge.Mask = "0000-00-00";
+            TxtAge.Name = "TxtAge";
+            TxtAge.Size = new Size(170, 23);
+            TxtAge.TabIndex = 2;
+            // 
             // FrmMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(584, 311);
+            Controls.Add(TxtAge);
             Controls.Add(BtnMsg);
             Controls.Add(RdoFemale);
             Controls.Add(RdoMale);
             Controls.Add(TxtResul);
-            Controls.Add(TxtAge);
             Controls.Add(LblResult);
             Controls.Add(LblGender);
             Controls.Add(LblAge);
@@ -156,12 +157,12 @@
         private Label LblName;
         private TextBox TxtName;
         private Label LblAge;
-        private TextBox TxtAge;
         private Label LblGender;
         private RadioButton RdoMale;
         private RadioButton RdoFemale;
         private Button BtnMsg;
         private Label LblResult;
         private TextBox TxtResul;
+        private MaskedTextBox TxtAge;
     }
 }
