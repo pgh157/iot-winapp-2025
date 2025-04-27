@@ -247,6 +247,8 @@
             pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox.TabIndex = 4;
             pictureBox.TabStop = false;
+            pictureBox.Click += pictureBox_Click;
+            pictureBox.SystemColorsChanged += pictureBox_SystemColorsChanged;
             // 
             // ScrBarG
             // 
@@ -255,7 +257,6 @@
             ScrBarG.Name = "ScrBarG";
             ScrBarG.Size = new Size(152, 24);
             ScrBarG.TabIndex = 1;
-            ScrBarG.Scroll += scroll_RGBA_P;
             // 
             // TxtBoxA
             // 
@@ -263,7 +264,6 @@
             TxtBoxA.Name = "TxtBoxA";
             TxtBoxA.Size = new Size(67, 23);
             TxtBoxA.TabIndex = 3;
-            TxtBoxA.TextChanged += textchanged_RGBA_P;
             // 
             // label6
             // 
@@ -283,7 +283,6 @@
             ScrBarR.Name = "ScrBarR";
             ScrBarR.Size = new Size(152, 24);
             ScrBarR.TabIndex = 1;
-            ScrBarR.Scroll += scroll_RGBA_P;
             // 
             // label7
             // 
@@ -302,7 +301,6 @@
             TxtBoxB.Name = "TxtBoxB";
             TxtBoxB.Size = new Size(67, 23);
             TxtBoxB.TabIndex = 3;
-            TxtBoxB.TextChanged += textchanged_RGBA_P;
             // 
             // label8
             // 
@@ -331,7 +329,6 @@
             TxtBoxG.Name = "TxtBoxG";
             TxtBoxG.Size = new Size(67, 23);
             TxtBoxG.TabIndex = 3;
-            TxtBoxG.TextChanged += textchanged_RGBA_P;
             // 
             // label10
             // 
@@ -348,7 +345,6 @@
             ScrBarB.Name = "ScrBarB";
             ScrBarB.Size = new Size(152, 24);
             ScrBarB.TabIndex = 1;
-            ScrBarB.Scroll += scroll_RGBA_P;
             // 
             // ScrBarA
             // 
@@ -357,7 +353,6 @@
             ScrBarA.Name = "ScrBarA";
             ScrBarA.Size = new Size(152, 24);
             ScrBarA.TabIndex = 1;
-            ScrBarA.Scroll += scroll_RGBA_P;
             // 
             // TxtBoxR
             // 
@@ -365,7 +360,6 @@
             TxtBoxR.Name = "TxtBoxR";
             TxtBoxR.Size = new Size(67, 23);
             TxtBoxR.TabIndex = 3;
-            TxtBoxR.TextChanged += textchanged_RGBA_P;
             // 
             // Form1
             // 
