@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             panel1 = new Panel();
             hScrollBar_R = new HScrollBar();
             label1 = new Label();
@@ -45,6 +46,8 @@
             textBox_A = new TextBox();
             groupBox1 = new GroupBox();
             groupBox2 = new GroupBox();
+            RdBtn2 = new RadioButton();
+            RdBtn1 = new RadioButton();
             pictureBox = new PictureBox();
             ScrBarG = new HScrollBar();
             TxtBoxA = new TextBox();
@@ -68,6 +71,7 @@
             // 
             // panel1
             // 
+            panel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panel1.Location = new Point(6, 22);
             panel1.Name = "panel1";
             panel1.Size = new Size(290, 144);
@@ -75,6 +79,7 @@
             // 
             // hScrollBar_R
             // 
+            hScrollBar_R.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             hScrollBar_R.Location = new Point(66, 200);
             hScrollBar_R.Maximum = 264;
             hScrollBar_R.Name = "hScrollBar_R";
@@ -84,6 +89,7 @@
             // 
             // label1
             // 
+            label1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label1.AutoSize = true;
             label1.Font = new Font("맑은 고딕", 9F, FontStyle.Bold);
             label1.ForeColor = Color.Red;
@@ -103,6 +109,7 @@
             // 
             // textBox_R
             // 
+            textBox_R.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             textBox_R.Location = new Point(235, 201);
             textBox_R.Name = "textBox_R";
             textBox_R.Size = new Size(67, 23);
@@ -111,6 +118,7 @@
             // 
             // hScrollBar_G
             // 
+            hScrollBar_G.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             hScrollBar_G.Location = new Point(66, 227);
             hScrollBar_G.Maximum = 264;
             hScrollBar_G.Name = "hScrollBar_G";
@@ -120,6 +128,7 @@
             // 
             // label3
             // 
+            label3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label3.AutoSize = true;
             label3.Font = new Font("맑은 고딕", 9F, FontStyle.Bold);
             label3.ForeColor = Color.Lime;
@@ -131,6 +140,7 @@
             // 
             // textBox_G
             // 
+            textBox_G.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             textBox_G.Location = new Point(235, 228);
             textBox_G.Name = "textBox_G";
             textBox_G.Size = new Size(67, 23);
@@ -139,6 +149,7 @@
             // 
             // hScrollBar_B
             // 
+            hScrollBar_B.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             hScrollBar_B.Location = new Point(66, 255);
             hScrollBar_B.Maximum = 264;
             hScrollBar_B.Name = "hScrollBar_B";
@@ -148,6 +159,7 @@
             // 
             // label4
             // 
+            label4.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label4.AutoSize = true;
             label4.Font = new Font("맑은 고딕", 9F, FontStyle.Bold);
             label4.ForeColor = Color.FromArgb(0, 0, 192);
@@ -159,6 +171,7 @@
             // 
             // textBox_B
             // 
+            textBox_B.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             textBox_B.Location = new Point(235, 256);
             textBox_B.Name = "textBox_B";
             textBox_B.Size = new Size(67, 23);
@@ -167,6 +180,7 @@
             // 
             // hScrollBar_A
             // 
+            hScrollBar_A.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             hScrollBar_A.Location = new Point(66, 289);
             hScrollBar_A.Maximum = 264;
             hScrollBar_A.Name = "hScrollBar_A";
@@ -176,6 +190,7 @@
             // 
             // label5
             // 
+            label5.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label5.AutoSize = true;
             label5.Font = new Font("맑은 고딕", 9F, FontStyle.Bold);
             label5.Location = new Point(12, 293);
@@ -186,6 +201,7 @@
             // 
             // textBox_A
             // 
+            textBox_A.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             textBox_A.Location = new Point(235, 290);
             textBox_A.Name = "textBox_A";
             textBox_A.Size = new Size(67, 23);
@@ -194,6 +210,8 @@
             // 
             // groupBox1
             // 
+            groupBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            groupBox1.AutoSize = true;
             groupBox1.Controls.Add(panel1);
             groupBox1.Controls.Add(textBox_A);
             groupBox1.Controls.Add(hScrollBar_R);
@@ -210,13 +228,16 @@
             groupBox1.Controls.Add(label4);
             groupBox1.Location = new Point(12, 12);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(324, 332);
+            groupBox1.Size = new Size(324, 335);
             groupBox1.TabIndex = 4;
             groupBox1.TabStop = false;
             groupBox1.Text = "RGBA연습";
             // 
             // groupBox2
             // 
+            groupBox2.AutoSize = true;
+            groupBox2.Controls.Add(RdBtn2);
+            groupBox2.Controls.Add(RdBtn1);
             groupBox2.Controls.Add(pictureBox);
             groupBox2.Controls.Add(ScrBarG);
             groupBox2.Controls.Add(TxtBoxA);
@@ -233,33 +254,59 @@
             groupBox2.Controls.Add(TxtBoxR);
             groupBox2.Location = new Point(351, 12);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(370, 332);
+            groupBox2.Size = new Size(370, 349);
             groupBox2.TabIndex = 5;
             groupBox2.TabStop = false;
             groupBox2.Text = "이미지RGBA";
             // 
+            // RdBtn2
+            // 
+            RdBtn2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            RdBtn2.AutoSize = true;
+            RdBtn2.Location = new Point(130, 172);
+            RdBtn2.Name = "RdBtn2";
+            RdBtn2.Size = new Size(49, 19);
+            RdBtn2.TabIndex = 5;
+            RdBtn2.TabStop = true;
+            RdBtn2.Text = "원복";
+            RdBtn2.UseVisualStyleBackColor = true;
+            // 
+            // RdBtn1
+            // 
+            RdBtn1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            RdBtn1.AutoSize = true;
+            RdBtn1.Location = new Point(29, 173);
+            RdBtn1.Name = "RdBtn1";
+            RdBtn1.Size = new Size(49, 19);
+            RdBtn1.TabIndex = 5;
+            RdBtn1.TabStop = true;
+            RdBtn1.Text = "수정";
+            RdBtn1.UseVisualStyleBackColor = true;
+            // 
             // pictureBox
             // 
+            pictureBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             pictureBox.Image = Properties.Resources.wrtFileImageView;
             pictureBox.Location = new Point(6, 22);
             pictureBox.Name = "pictureBox";
-            pictureBox.Size = new Size(358, 144);
+            pictureBox.Size = new Size(358, 145);
             pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox.TabIndex = 4;
             pictureBox.TabStop = false;
-            pictureBox.Click += pictureBox_Click;
-            pictureBox.SystemColorsChanged += pictureBox_SystemColorsChanged;
+            pictureBox.MouseMove += PictureBox_MouseMove;
             // 
             // ScrBarG
             // 
+            ScrBarG.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             ScrBarG.Location = new Point(83, 222);
             ScrBarG.Maximum = 264;
             ScrBarG.Name = "ScrBarG";
-            ScrBarG.Size = new Size(152, 24);
+            ScrBarG.Size = new Size(152, 29);
             ScrBarG.TabIndex = 1;
             // 
             // TxtBoxA
             // 
+            TxtBoxA.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             TxtBoxA.Location = new Point(252, 285);
             TxtBoxA.Name = "TxtBoxA";
             TxtBoxA.Size = new Size(67, 23);
@@ -267,6 +314,7 @@
             // 
             // label6
             // 
+            label6.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label6.AutoSize = true;
             label6.Font = new Font("맑은 고딕", 9F, FontStyle.Bold);
             label6.ForeColor = Color.FromArgb(0, 0, 192);
@@ -278,14 +326,16 @@
             // 
             // ScrBarR
             // 
+            ScrBarR.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             ScrBarR.Location = new Point(83, 195);
             ScrBarR.Maximum = 264;
             ScrBarR.Name = "ScrBarR";
-            ScrBarR.Size = new Size(152, 24);
+            ScrBarR.Size = new Size(152, 29);
             ScrBarR.TabIndex = 1;
             // 
             // label7
             // 
+            label7.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label7.AutoSize = true;
             label7.Font = new Font("맑은 고딕", 9F, FontStyle.Bold);
             label7.ForeColor = Color.Lime;
@@ -297,6 +347,7 @@
             // 
             // TxtBoxB
             // 
+            TxtBoxB.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             TxtBoxB.Location = new Point(252, 251);
             TxtBoxB.Name = "TxtBoxB";
             TxtBoxB.Size = new Size(67, 23);
@@ -304,6 +355,7 @@
             // 
             // label8
             // 
+            label8.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label8.AutoSize = true;
             label8.Font = new Font("맑은 고딕", 9F, FontStyle.Bold);
             label8.Location = new Point(29, 288);
@@ -314,6 +366,7 @@
             // 
             // label9
             // 
+            label9.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label9.AutoSize = true;
             label9.Font = new Font("맑은 고딕", 9F, FontStyle.Bold);
             label9.ForeColor = Color.Red;
@@ -325,6 +378,7 @@
             // 
             // TxtBoxG
             // 
+            TxtBoxG.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             TxtBoxG.Location = new Point(252, 223);
             TxtBoxG.Name = "TxtBoxG";
             TxtBoxG.Size = new Size(67, 23);
@@ -340,22 +394,25 @@
             // 
             // ScrBarB
             // 
+            ScrBarB.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             ScrBarB.Location = new Point(83, 250);
             ScrBarB.Maximum = 264;
             ScrBarB.Name = "ScrBarB";
-            ScrBarB.Size = new Size(152, 24);
+            ScrBarB.Size = new Size(152, 29);
             ScrBarB.TabIndex = 1;
             // 
             // ScrBarA
             // 
+            ScrBarA.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             ScrBarA.Location = new Point(83, 284);
             ScrBarA.Maximum = 264;
             ScrBarA.Name = "ScrBarA";
-            ScrBarA.Size = new Size(152, 24);
+            ScrBarA.Size = new Size(152, 29);
             ScrBarA.TabIndex = 1;
             // 
             // TxtBoxR
             // 
+            TxtBoxR.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             TxtBoxR.Location = new Point(252, 196);
             TxtBoxR.Name = "TxtBoxR";
             TxtBoxR.Size = new Size(67, 23);
@@ -365,11 +422,15 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoSize = true;
+            BackColor = SystemColors.ControlLightLight;
             ClientSize = new Size(733, 355);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Form1";
-            Text = "Form1";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "그림판";
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
@@ -377,6 +438,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox).EndInit();
             ((System.ComponentModel.ISupportInitialize)bindingSource1).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -412,5 +474,7 @@
         private HScrollBar ScrBarA;
         private TextBox TxtBoxR;
         private BindingSource bindingSource1;
+        private RadioButton RdBtn2;
+        private RadioButton RdBtn1;
     }
 }

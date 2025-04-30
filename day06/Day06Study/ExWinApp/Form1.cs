@@ -3,10 +3,28 @@ using System.Windows.Forms;
 using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
 
+/* 그림판
+ *  패널로 연습 ㅇ
+ *  이미지 없는 그림판
+ *      - 그냥 이미지 처럼 하면 될듯
+ *  이미지 있는 그림
+ *      - 이미지를 저장후 덮는?
+ *  점, 선, 지우개, 도형
+ *  RGBA 설정
+ *  불러오기, 저장
+ */
+
 namespace ExWinApp
 {
+
     public partial class Form1 : Form
     {
+        private Bitmap canvas;
+        private Image originalImage;
+        private Point startPoint;
+        private Point endPoint;
+        private bool isDrawing = false;
+        private bool isDragging = false;
         public Form1()
         {
             InitializeComponent();
@@ -17,9 +35,37 @@ namespace ExWinApp
             textBox_R.Text = 0.ToString();
             textBox_G.Text = 0.ToString();
             textBox_B.Text = 0.ToString();
+
             textBox_A.Text = 255.ToString();
+            // PictureBox에 이미지가 이미 설정되어 있다고 가정
+            if (pictureBox.Image != null)
+            {
+                // 원래 이미지를 복사해서 Bitmap으로 만듦
+                Image originalImage = pictureBox.Image;
+                canvas = new Bitmap(originalImage.Width, originalImage.Height);
+
+                using (Graphics g = Graphics.FromImage(canvas))
+                {
+                    g.DrawImage(originalImage, 0, 0); // 기존 이미지 복사
+                }
+
+                pictureBox.Image = canvas; // 복사된 비트맵을 다시 PictureBox에 설정
+            }
+
+            //// PictureBox에 디자이너에서 사진이 설정돼 있다고 가정
+            //if (pictureBox.Image != null)
+            //{
+            //    originalImage = new Bitmap(pictureBox.Image); // 원본 이미지 저장
+            //    pictureBox.Image = new Bitmap(originalImage); // 작업용 이미지
+            //}
+
+            // 이벤트 연결
+            pictureBox.MouseDown += pictureBox_MouseDown;
+            pictureBox.MouseMove += PictureBox_MouseMove;
+            pictureBox.MouseUp += pictureBox_MouseUp;
         }
 
+        
         private void scroll_RGBA(object sender, ScrollEventArgs e)
         {
             // RGBA 값 추출        
@@ -132,6 +178,128 @@ namespace ExWinApp
             }
         }
 
+        private Point TranslateZoomMousePosition(PictureBox pb, MouseEventArgs e)
+        {
+            if (pb.Image == null) return e.Location;
+
+            int imageWidth = pb.Image.Width;
+            int imageHeight = pb.Image.Height;
+            int pbWidth = pb.Width;
+            int pbHeight = pb.Height;
+
+            float ratioWidth = (float)pbWidth / imageWidth;
+            float ratioHeight = (float)pbHeight / imageHeight;
+            float ratio = Math.Min(ratioWidth, ratioHeight);
+
+            int offsetX = (int)((pbWidth - imageWidth * ratio) / 2);
+            int offsetY = (int)((pbHeight - imageHeight * ratio) / 2);
+
+            int x = (int)((e.X - offsetX) / ratio);
+            int y = (int)((e.Y - offsetY) / ratio);
+
+            return new Point(x, y);
+        }
+
+        private void PictureBox_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (RdBtn1.Checked)
+            {
+                if (e.Button == MouseButtons.Left)
+                {
+                    Point translatedPoint = TranslateZoomMousePosition(pictureBox, e);
+
+                    using (Graphics g = Graphics.FromImage(pictureBox.Image))
+                    {
+                        int size = 10;
+                        g.FillEllipse(Brushes.BlueViolet,
+                            translatedPoint.X - size / 2, translatedPoint.Y - size / 2, size, size);
+                    }
+
+                    pictureBox.Invalidate();
+                }
+            }
+            if (RdBtn2.Checked)
+            {
+                if (isDragging)
+                {
+                    pictureBox.Image.Dispose();
+                    pictureBox.Image = new Bitmap(originalImage); // 원본에서 복사
+
+                    using (Graphics g = Graphics.FromImage(pictureBox.Image))
+                    {
+                        Rectangle rect = GetRectangle(startPoint, e.Location);
+                        using (Pen pen = new Pen(Color.Blue, 2))
+                        {
+                            g.DrawRectangle(pen, rect); // 테두리만 그림
+                        }
+                    }
+
+                    pictureBox.Invalidate();
+                }
+            }
+        }
+        private void pictureBox_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                startPoint = e.Location;
+                isDragging = true;
+            }
+        }
+
+        // 마우스 이동 시 사각형 미리 보기
+        private void pictureBox2_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (isDragging)
+            {
+                pictureBox.Image.Dispose();
+                pictureBox.Image = new Bitmap(originalImage); // 원본에서 복사
+
+                using (Graphics g = Graphics.FromImage(pictureBox.Image))
+                {
+                    Rectangle rect = GetRectangle(startPoint, e.Location);
+                    using (Pen pen = new Pen(Color.Blue, 2))
+                    {
+                        g.DrawRectangle(pen, rect); // 테두리만 그림
+                    }
+                }
+
+                pictureBox.Invalidate();
+            }
+        }
+        // 마우스 누를 때
+        private void pictureBox_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (isDragging)
+            {
+                isDragging = false;
+
+                using (Graphics g = Graphics.FromImage(originalImage))
+                {
+                    Rectangle rect = GetRectangle(startPoint, e.Location);
+                    using (Pen pen = new Pen(Color.Blue, 2))
+                    {
+                        g.DrawRectangle(pen, rect); // 실제 원본에 그림
+                    }
+                }
+
+                pictureBox.Image.Dispose();
+                pictureBox.Image = new Bitmap(originalImage); // 다시 표시
+                pictureBox.Invalidate();
+            }
+        }
+
+        // 시작점과 끝점으로 사각형 계산
+        private Rectangle GetRectangle(Point p1, Point p2)
+        {
+            return new Rectangle(
+                Math.Min(p1.X, p2.X),
+                Math.Min(p1.Y, p2.Y),
+                Math.Abs(p1.X - p2.X),
+                Math.Abs(p1.Y - p2.Y));
+        }
+
+
         //Bitmap originalBitmap; // 원본 이미지 저장용
 
 
@@ -240,31 +408,32 @@ namespace ExWinApp
         //    oldImage.Dispose();
         //}
 
-        private void pictureBox_Click(object sender, EventArgs e)
-        {
+        //private void pictureBox_Click(object sender, EventArgs e)
+        //{
 
-        }
+        //}
 
-        private void pictureBox_SystemColorsChanged(object sender, EventArgs e)
-        {
-            // RGBA 값 추출        
-            int red = hScrollBar_R.Value;
-            int green = hScrollBar_G.Value;
-            int blue = hScrollBar_B.Value;
-            int alpha = hScrollBar_A.Value;
+        //private void pictureBox_SystemColorsChanged(object sender, EventArgs e)
+        //{
+        //    // RGBA 값 추출        
+        //    int red = hScrollBar_R.Value;
+        //    int green = hScrollBar_G.Value;
+        //    int blue = hScrollBar_B.Value;
+        //    int alpha = hScrollBar_A.Value;
 
-            if (pictureBox.Image == null) return;
+        //    if (pictureBox.Image == null) return;
 
-            Bitmap bmp = new Bitmap(pictureBox.Image.Width, pictureBox.Image.Height);
-            using (Graphics g = Graphics.FromImage(bmp))
-            {
-                g.Clear(Color.FromArgb(alpha, red, green, blue));
-            }
+        //    Bitmap bmp = new Bitmap(pictureBox.Image.Width, pictureBox.Image.Height);
+        //    using (Graphics g = Graphics.FromImage(bmp))
+        //    {
+        //        g.Clear(Color.FromArgb(alpha, red, green, blue));
+        //    }
 
-            // 기존 이미지 메모리 해제
-            var oldImage = pictureBox.Image;
-            pictureBox.Image = bmp;
-            oldImage.Dispose();
-        }
+        //    // 기존 이미지 메모리 해제
+        //    var oldImage = pictureBox.Image;
+        //    pictureBox.Image = bmp;
+        //    oldImage.Dispose();
+        //}
+
     }
 }
