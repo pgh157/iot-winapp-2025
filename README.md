@@ -1078,6 +1078,9 @@ iot 개발자 c#/WinApp 리포지토리 2025
 
 ### 코딩테스트
 
+#### 이미지 편집
+- 이미지에 그림판 기능을 작동하게 함.
+
 https://github.com/user-attachments/assets/f68d8ed2-9f56-4ef1-8c39-b2edcc2b42e0
 
 
