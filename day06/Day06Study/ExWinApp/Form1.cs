@@ -62,7 +62,7 @@ namespace ExWinApp
             // 이벤트 연결
             pictureBox.MouseDown += pictureBox_MouseDown;
             pictureBox.MouseMove += PictureBox_MouseMove;
-            pictureBox.MouseUp += pictureBox_MouseUp;
+            //pictureBox.MouseUp += pictureBox_MouseUp;
         }
 
         
@@ -220,22 +220,22 @@ namespace ExWinApp
             }
             if (RdBtn2.Checked)
             {
-                if (isDragging)
-                {
-                    pictureBox.Image.Dispose();
-                    pictureBox.Image = new Bitmap(originalImage); // 원본에서 복사
+                //if (isDragging)
+                //{
+                //    pictureBox.Image.Dispose();
+                //    pictureBox.Image = new Bitmap(originalImage); // 원본에서 복사
 
-                    using (Graphics g = Graphics.FromImage(pictureBox.Image))
-                    {
-                        Rectangle rect = GetRectangle(startPoint, e.Location);
-                        using (Pen pen = new Pen(Color.Blue, 2))
-                        {
-                            g.DrawRectangle(pen, rect); // 테두리만 그림
-                        }
-                    }
+                //    using (Graphics g = Graphics.FromImage(pictureBox.Image))
+                //    {
+                //        Rectangle rect = GetRectangle(startPoint, e.Location);
+                //        using (Pen pen = new Pen(Color.Blue, 2))
+                //        {
+                //            g.DrawRectangle(pen, rect); // 테두리만 그림
+                //        }
+                //    }
 
-                    pictureBox.Invalidate();
-                }
+                //    pictureBox.Invalidate();
+                //}
             }
         }
         private void pictureBox_MouseDown(object sender, MouseEventArgs e)
@@ -247,193 +247,60 @@ namespace ExWinApp
             }
         }
 
-        // 마우스 이동 시 사각형 미리 보기
-        private void pictureBox2_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (isDragging)
-            {
-                pictureBox.Image.Dispose();
-                pictureBox.Image = new Bitmap(originalImage); // 원본에서 복사
-
-                using (Graphics g = Graphics.FromImage(pictureBox.Image))
-                {
-                    Rectangle rect = GetRectangle(startPoint, e.Location);
-                    using (Pen pen = new Pen(Color.Blue, 2))
-                    {
-                        g.DrawRectangle(pen, rect); // 테두리만 그림
-                    }
-                }
-
-                pictureBox.Invalidate();
-            }
-        }
-        // 마우스 누를 때
-        private void pictureBox_MouseUp(object sender, MouseEventArgs e)
-        {
-            if (isDragging)
-            {
-                isDragging = false;
-
-                using (Graphics g = Graphics.FromImage(originalImage))
-                {
-                    Rectangle rect = GetRectangle(startPoint, e.Location);
-                    using (Pen pen = new Pen(Color.Blue, 2))
-                    {
-                        g.DrawRectangle(pen, rect); // 실제 원본에 그림
-                    }
-                }
-
-                pictureBox.Image.Dispose();
-                pictureBox.Image = new Bitmap(originalImage); // 다시 표시
-                pictureBox.Invalidate();
-            }
-        }
-
-        // 시작점과 끝점으로 사각형 계산
-        private Rectangle GetRectangle(Point p1, Point p2)
-        {
-            return new Rectangle(
-                Math.Min(p1.X, p2.X),
-                Math.Min(p1.Y, p2.Y),
-                Math.Abs(p1.X - p2.X),
-                Math.Abs(p1.Y - p2.Y));
-        }
-
-
-        //Bitmap originalBitmap; // 원본 이미지 저장용
-
-
-        //// RGBA 스크롤 시 이미지 색상 적용
-        //private void scroll_RGBA_P(object sender, ScrollEventArgs e)
+        //// 마우스 이동 시 사각형 미리 보기
+        //private void pictureBox2_MouseMove(object sender, MouseEventArgs e)
         //{
-        //    int red = ScrBarR.Value;
-        //    int green = ScrBarG.Value;
-        //    int blue = ScrBarB.Value;
-        //    int alpha = ScrBarA.Value;
-
-        //    TxtBoxR.Text = red.ToString();
-        //    TxtBoxG.Text = green.ToString();
-        //    TxtBoxB.Text = blue.ToString();
-        //    TxtBoxA.Text = alpha.ToString();
-
-        //    ApplyColorToImage(red, green, blue, alpha);
-        //}
-
-        //// 텍스트 변경 시 이미지 색상 적용
-        //private void textchanged_RGBA_P(object sender, EventArgs e)
-        //{
-        //    if (TxtBoxR.Text != "" && TxtBoxG.Text != "" && TxtBoxB.Text != "" && TxtBoxA.Text != "")
+        //    if (isDragging)
         //    {
-        //        int red = Math.Min(int.Parse(TxtBoxR.Text), 255);
-        //        int green = Math.Min(int.Parse(TxtBoxG.Text), 255);
-        //        int blue = Math.Min(int.Parse(TxtBoxB.Text), 255);
-        //        int alpha = Math.Min(int.Parse(TxtBoxA.Text), 255);
+        //        pictureBox.Image.Dispose();
+        //        pictureBox.Image = new Bitmap(originalImage); // 원본에서 복사
 
-        //        TxtBoxR.Text = red.ToString();
-        //        TxtBoxG.Text = green.ToString();
-        //        TxtBoxB.Text = blue.ToString();
-        //        TxtBoxA.Text = alpha.ToString();
-
-        //        ScrBarR.Value = red;
-        //        ScrBarG.Value = green;
-        //        ScrBarB.Value = blue;
-        //        ScrBarA.Value = alpha;
-
-        //        ApplyColorToImage(red, green, blue, alpha);
-        //        //object sy = pictureBox.Sy;
-        //    }
-        //}
-
-        //// 이미지 전체에 RGBA 색상 적용 함수
-        //private void ApplyColorToImage(int r, int g, int b, int a)
-        //{
-        //    Bitmap newBitmap = new Bitmap(originalBitmap.Width, originalBitmap.Height);
-
-        //    for (int y = 0; y < originalBitmap.Height; y++)
-        //    {
-        //        for (int x = 0; x < originalBitmap.Width; x++)
+        //        using (Graphics g = Graphics.FromImage(pictureBox.Image))
         //        {
-        //            Color originalColor = originalBitmap.GetPixel(x, y);
-        //            Color newColor = Color.FromArgb(a, r, g, b);
-        //            newBitmap.SetPixel(x, y, newColor);
+        //            Rectangle rect = GetRectangle(startPoint, e.Location);
+        //            using (Pen pen = new Pen(Color.Blue, 2))
+        //            {
+        //                g.DrawRectangle(pen, rect); // 테두리만 그림
+        //            }
         //        }
+
+        //        pictureBox.Invalidate();
         //    }
-
-        //    pictureBox.Image = newBitmap;
         //}
-
-        //private void ChangePictureBoxColor(int alpha, int red, int green, int blue)
+        //// 마우스 누를 때
+        //private void pictureBox_MouseUp(object sender, MouseEventArgs e)
         //{
-        //    if (pictureBox.Image == null) return;
-
-        //    Bitmap original = new Bitmap(pictureBox.Image);
-        //    Bitmap adjusted = new Bitmap(original.Width, original.Height);
-
-        //    for (int y = 0; y < original.Height; y++)
+        //    if (isDragging)
         //    {
-        //        for (int x = 0; x < original.Width; x++)
+        //        isDragging = false;
+
+        //        using (Graphics g = Graphics.FromImage(originalImage))
         //        {
-        //            Color pixel = original.GetPixel(x, y);
-
-        //            // 원본 픽셀 색상에 사용자가 선택한 색상을 '곱해줌'
-        //            int newR = pixel.R * red / 255;
-        //            int newG = pixel.G * green / 255;
-        //            int newB = pixel.B * blue / 255;
-        //            int newA = pixel.A * alpha / 255;
-
-        //            Color newColor = Color.FromArgb(newA, newR, newG, newB);
-        //            adjusted.SetPixel(x, y, newColor);
+        //            Rectangle rect = GetRectangle(startPoint, e.Location);
+        //            using (Pen pen = new Pen(Color.Blue, 2))
+        //            {
+        //                g.DrawRectangle(pen, rect); // 실제 원본에 그림
+        //            }
         //        }
+
+        //        pictureBox.Image.Dispose();
+        //        pictureBox.Image = new Bitmap(originalImage); // 다시 표시
+        //        pictureBox.Invalidate();
         //    }
-
-        //    // 기존 이미지 메모리 해제
-        //    var oldImage = pictureBox.Image;
-        //    pictureBox.Image = adjusted;
-        //    oldImage.Dispose();
         //}
 
-        //private void ChangePictureBoxColor(int alpha, int red, int green, int blue)
+        //// 시작점과 끝점으로 사각형 계산
+        //private Rectangle GetRectangle(Point p1, Point p2)
         //{
-        //    if (pictureBox.Image == null) return;
-
-        //    Bitmap bmp = new Bitmap(pictureBox.Image.Width, pictureBox.Image.Height);
-        //    using (Graphics g = Graphics.FromImage(bmp))
-        //    {
-        //        g.Clear(Color.FromArgb(alpha, red, green, blue));
-        //    }
-
-        //    // 기존 이미지 메모리 해제
-        //    var oldImage = pictureBox.Image;
-        //    pictureBox.Image = bmp;
-        //    oldImage.Dispose();
+        //    return new Rectangle(
+        //        Math.Min(p1.X, p2.X),
+        //        Math.Min(p1.Y, p2.Y),
+        //        Math.Abs(p1.X - p2.X),
+        //        Math.Abs(p1.Y - p2.Y));
         //}
 
-        //private void pictureBox_Click(object sender, EventArgs e)
-        //{
 
-        //}
 
-        //private void pictureBox_SystemColorsChanged(object sender, EventArgs e)
-        //{
-        //    // RGBA 값 추출        
-        //    int red = hScrollBar_R.Value;
-        //    int green = hScrollBar_G.Value;
-        //    int blue = hScrollBar_B.Value;
-        //    int alpha = hScrollBar_A.Value;
-
-        //    if (pictureBox.Image == null) return;
-
-        //    Bitmap bmp = new Bitmap(pictureBox.Image.Width, pictureBox.Image.Height);
-        //    using (Graphics g = Graphics.FromImage(bmp))
-        //    {
-        //        g.Clear(Color.FromArgb(alpha, red, green, blue));
-        //    }
-
-        //    // 기존 이미지 메모리 해제
-        //    var oldImage = pictureBox.Image;
-        //    pictureBox.Image = bmp;
-        //    oldImage.Dispose();
-        //}
 
     }
 }
