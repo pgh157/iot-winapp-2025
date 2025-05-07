@@ -94,7 +94,6 @@
             TxtResult.Name = "TxtResult";
             TxtResult.Size = new Size(541, 179);
             TxtResult.TabIndex = 3;
-            TxtResult.TextChanged += textBox1_TextChanged;
             // 
             // BtnDisplay
             // 

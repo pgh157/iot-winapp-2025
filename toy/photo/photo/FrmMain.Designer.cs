@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             pictureBox1 = new PictureBox();
             BtnOpen = new Button();
+            imageList1 = new ImageList(components);
             colorDialog1 = new ColorDialog();
             savebutton = new Button();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
@@ -52,10 +53,10 @@
             BtnCircle = new Button();
             BtnTriangle = new Button();
             BtnRedo = new Button();
+            imageList2 = new ImageList(components);
             BtnUndo = new Button();
             groupBox3 = new GroupBox();
             groupBox4 = new GroupBox();
-            imageList1 = new ImageList(components);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)TrbPenSize).BeginInit();
@@ -90,6 +91,16 @@
             BtnOpen.UseVisualStyleBackColor = true;
             BtnOpen.Click += BtnOpen_Click;
             // 
+            // imageList1
+            // 
+            imageList1.ColorDepth = ColorDepth.Depth32Bit;
+            imageList1.ImageStream = (ImageListStreamer)resources.GetObject("imageList1.ImageStream");
+            imageList1.TransparentColor = Color.Transparent;
+            imageList1.Images.SetKeyName(0, "folder-normal.png");
+            imageList1.Images.SetKeyName(1, "disk.png");
+            imageList1.Images.SetKeyName(2, "redo-arrow-symbol.png");
+            imageList1.Images.SetKeyName(3, "undo-arrow (1).png");
+            // 
             // savebutton
             // 
             savebutton.Font = new Font("맑은 고딕", 9F, FontStyle.Bold);
@@ -108,9 +119,9 @@
             // 
             groupBox2.Controls.Add(BtnPenColor);
             groupBox2.Controls.Add(TrbPenSize);
-            groupBox2.Location = new Point(22, 520);
+            groupBox2.Location = new Point(22, 506);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(392, 55);
+            groupBox2.Size = new Size(392, 69);
             groupBox2.TabIndex = 9;
             groupBox2.TabStop = false;
             groupBox2.Text = "색상 크기";
@@ -129,7 +140,7 @@
             // TrbPenSize
             // 
             TrbPenSize.BackColor = SystemColors.GradientInactiveCaption;
-            TrbPenSize.Location = new Point(82, 5);
+            TrbPenSize.Location = new Point(82, 14);
             TrbPenSize.Margin = new Padding(2);
             TrbPenSize.Maximum = 40;
             TrbPenSize.Minimum = 2;
@@ -148,7 +159,7 @@
             groupBox5.Margin = new Padding(2);
             groupBox5.Name = "groupBox5";
             groupBox5.Padding = new Padding(2);
-            groupBox5.Size = new Size(376, 70);
+            groupBox5.Size = new Size(392, 70);
             groupBox5.TabIndex = 5;
             groupBox5.TabStop = false;
             groupBox5.Text = "펜 모드";
@@ -215,7 +226,7 @@
             // 
             BtnReset.Location = new Point(197, 19);
             BtnReset.Name = "BtnReset";
-            BtnReset.Size = new Size(75, 23);
+            BtnReset.Size = new Size(75, 31);
             BtnReset.TabIndex = 10;
             BtnReset.Text = "복원";
             BtnReset.UseVisualStyleBackColor = true;
@@ -274,18 +285,32 @@
             // 
             // BtnRedo
             // 
+            BtnRedo.ImageAlign = ContentAlignment.MiddleRight;
+            BtnRedo.ImageKey = "redo-arrow-symbol.png";
+            BtnRedo.ImageList = imageList2;
             BtnRedo.Location = new Point(98, 19);
             BtnRedo.Name = "BtnRedo";
-            BtnRedo.Size = new Size(75, 23);
+            BtnRedo.Size = new Size(75, 31);
             BtnRedo.TabIndex = 13;
             BtnRedo.Text = "Redo";
             BtnRedo.UseVisualStyleBackColor = true;
             // 
+            // imageList2
+            // 
+            imageList2.ColorDepth = ColorDepth.Depth32Bit;
+            imageList2.ImageStream = (ImageListStreamer)resources.GetObject("imageList2.ImageStream");
+            imageList2.TransparentColor = Color.Transparent;
+            imageList2.Images.SetKeyName(0, "redo-arrow-symbol.png");
+            imageList2.Images.SetKeyName(1, "undo-arrow (1).png");
+            // 
             // BtnUndo
             // 
+            BtnUndo.ImageAlign = ContentAlignment.MiddleRight;
+            BtnUndo.ImageKey = "undo-arrow (1).png";
+            BtnUndo.ImageList = imageList2;
             BtnUndo.Location = new Point(6, 19);
             BtnUndo.Name = "BtnUndo";
-            BtnUndo.Size = new Size(75, 23);
+            BtnUndo.Size = new Size(75, 31);
             BtnUndo.TabIndex = 12;
             BtnUndo.Text = "Undo";
             BtnUndo.UseVisualStyleBackColor = true;
@@ -306,20 +331,12 @@
             groupBox4.Controls.Add(BtnUndo);
             groupBox4.Controls.Add(BtnRedo);
             groupBox4.Controls.Add(BtnReset);
-            groupBox4.Location = new Point(632, 525);
+            groupBox4.Location = new Point(632, 520);
             groupBox4.Name = "groupBox4";
             groupBox4.Size = new Size(293, 59);
             groupBox4.TabIndex = 15;
             groupBox4.TabStop = false;
             groupBox4.Text = "groupBox4";
-            // 
-            // imageList1
-            // 
-            imageList1.ColorDepth = ColorDepth.Depth32Bit;
-            imageList1.ImageStream = (ImageListStreamer)resources.GetObject("imageList1.ImageStream");
-            imageList1.TransparentColor = Color.Transparent;
-            imageList1.Images.SetKeyName(0, "folder-normal.png");
-            imageList1.Images.SetKeyName(1, "disk.png");
             // 
             // FrmMain
             // 
@@ -379,5 +396,6 @@
         private CheckBox checkBox1;
         private GroupBox groupBox4;
         private ImageList imageList1;
+        private ImageList imageList2;
     }
 }
