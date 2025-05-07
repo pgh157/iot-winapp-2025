@@ -272,6 +272,14 @@ namespace photo
             if (colorDialog1.ShowDialog() == DialogResult.OK)
                 selectedColor = colorDialog1.Color;
         }
+        private void FrmMain_FormClosing_1(object sender, FormClosingEventArgs e)
+        {
+            if (MessageBox.Show("종료하시겠습니까? (저장 후 종료하세요)", "종료여부", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.No)
+            {
+                e.Cancel = true;    // 종료를 안시키는 것
+            }
+        }
+
 
         private void BtnRect_Click(object sender, EventArgs e) { if (CheckImage()) currentMode = DrawMode.Rectangle; }
         private void BtnCircle_Click(object sender, EventArgs e) { if (CheckImage()) currentMode = DrawMode.Circle; }
@@ -285,5 +293,7 @@ namespace photo
         private void BtnReset_Click(object sender, EventArgs e) => ResetToOriginal();
         private void BtnGray_Click(object sender, EventArgs e) => ConvertToGrayscale();
         private void BtnInvert_Click(object sender, EventArgs e) => InvertColors();
+
+
     }
 }

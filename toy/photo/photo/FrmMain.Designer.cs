@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             pictureBox1 = new PictureBox();
             BtnOpen = new Button();
@@ -35,13 +36,13 @@
             savebutton = new Button();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             groupBox2 = new GroupBox();
+            BtnPenColor = new Button();
+            TrbPenSize = new TrackBar();
             groupBox5 = new GroupBox();
             BtnCrayon = new Button();
             BtnMarker = new Button();
             BtnPen = new Button();
             BtnBrush = new Button();
-            TrbPenSize = new TrackBar();
-            BtnPenColor = new Button();
             BtnGray = new Button();
             BtnInvert = new Button();
             BtnReset = new Button();
@@ -54,10 +55,11 @@
             BtnUndo = new Button();
             groupBox3 = new GroupBox();
             groupBox4 = new GroupBox();
+            imageList1 = new ImageList(components);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             groupBox2.SuspendLayout();
-            groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)TrbPenSize).BeginInit();
+            groupBox5.SuspendLayout();
             groupBox1.SuspendLayout();
             groupBox3.SuspendLayout();
             groupBox4.SuspendLayout();
@@ -76,9 +78,13 @@
             // 
             // BtnOpen
             // 
-            BtnOpen.Location = new Point(934, 615);
+            BtnOpen.Font = new Font("맑은 고딕", 9F, FontStyle.Bold);
+            BtnOpen.ImageAlign = ContentAlignment.MiddleRight;
+            BtnOpen.ImageIndex = 0;
+            BtnOpen.ImageList = imageList1;
+            BtnOpen.Location = new Point(960, 613);
             BtnOpen.Name = "BtnOpen";
-            BtnOpen.Size = new Size(119, 43);
+            BtnOpen.Size = new Size(100, 43);
             BtnOpen.TabIndex = 2;
             BtnOpen.Text = "이미지열기";
             BtnOpen.UseVisualStyleBackColor = true;
@@ -86,7 +92,11 @@
             // 
             // savebutton
             // 
-            savebutton.Location = new Point(1066, 615);
+            savebutton.Font = new Font("맑은 고딕", 9F, FontStyle.Bold);
+            savebutton.ImageAlign = ContentAlignment.MiddleRight;
+            savebutton.ImageIndex = 1;
+            savebutton.ImageList = imageList1;
+            savebutton.Location = new Point(1076, 613);
             savebutton.Name = "savebutton";
             savebutton.Size = new Size(100, 43);
             savebutton.TabIndex = 5;
@@ -104,6 +114,29 @@
             groupBox2.TabIndex = 9;
             groupBox2.TabStop = false;
             groupBox2.Text = "색상 크기";
+            // 
+            // BtnPenColor
+            // 
+            BtnPenColor.Location = new Point(5, 21);
+            BtnPenColor.Margin = new Padding(2);
+            BtnPenColor.Name = "BtnPenColor";
+            BtnPenColor.Size = new Size(73, 22);
+            BtnPenColor.TabIndex = 1;
+            BtnPenColor.Text = "펜 색상";
+            BtnPenColor.UseVisualStyleBackColor = true;
+            BtnPenColor.Click += BtnPenColor_Click;
+            // 
+            // TrbPenSize
+            // 
+            TrbPenSize.BackColor = SystemColors.GradientInactiveCaption;
+            TrbPenSize.Location = new Point(82, 5);
+            TrbPenSize.Margin = new Padding(2);
+            TrbPenSize.Maximum = 40;
+            TrbPenSize.Minimum = 2;
+            TrbPenSize.Name = "TrbPenSize";
+            TrbPenSize.Size = new Size(310, 45);
+            TrbPenSize.TabIndex = 4;
+            TrbPenSize.Value = 5;
             // 
             // groupBox5
             // 
@@ -160,29 +193,6 @@
             BtnBrush.Text = "브러쉬";
             BtnBrush.UseVisualStyleBackColor = true;
             // 
-            // TrbPenSize
-            // 
-            TrbPenSize.BackColor = SystemColors.ActiveCaption;
-            TrbPenSize.Location = new Point(82, 5);
-            TrbPenSize.Margin = new Padding(2);
-            TrbPenSize.Maximum = 40;
-            TrbPenSize.Minimum = 2;
-            TrbPenSize.Name = "TrbPenSize";
-            TrbPenSize.Size = new Size(296, 45);
-            TrbPenSize.TabIndex = 4;
-            TrbPenSize.Value = 5;
-            // 
-            // BtnPenColor
-            // 
-            BtnPenColor.Location = new Point(5, 21);
-            BtnPenColor.Margin = new Padding(2);
-            BtnPenColor.Name = "BtnPenColor";
-            BtnPenColor.Size = new Size(73, 22);
-            BtnPenColor.TabIndex = 1;
-            BtnPenColor.Text = "펜 색상";
-            BtnPenColor.UseVisualStyleBackColor = true;
-            BtnPenColor.Click += BtnPenColor_Click;
-            // 
             // BtnGray
             // 
             BtnGray.Location = new Point(0, 22);
@@ -237,7 +247,7 @@
             // 
             // BtnRect
             // 
-            BtnRect.Location = new Point(6, 22);
+            BtnRect.Location = new Point(149, 20);
             BtnRect.Name = "BtnRect";
             BtnRect.Size = new Size(45, 23);
             BtnRect.TabIndex = 6;
@@ -246,7 +256,7 @@
             // 
             // BtnCircle
             // 
-            BtnCircle.Location = new Point(119, 22);
+            BtnCircle.Location = new Point(6, 20);
             BtnCircle.Name = "BtnCircle";
             BtnCircle.Size = new Size(48, 23);
             BtnCircle.TabIndex = 6;
@@ -255,7 +265,7 @@
             // 
             // BtnTriangle
             // 
-            BtnTriangle.Location = new Point(57, 22);
+            BtnTriangle.Location = new Point(72, 20);
             BtnTriangle.Name = "BtnTriangle";
             BtnTriangle.Size = new Size(56, 23);
             BtnTriangle.TabIndex = 6;
@@ -303,11 +313,19 @@
             groupBox4.TabStop = false;
             groupBox4.Text = "groupBox4";
             // 
+            // imageList1
+            // 
+            imageList1.ColorDepth = ColorDepth.Depth32Bit;
+            imageList1.ImageStream = (ImageListStreamer)resources.GetObject("imageList1.ImageStream");
+            imageList1.TransparentColor = Color.Transparent;
+            imageList1.Images.SetKeyName(0, "folder-normal.png");
+            imageList1.Images.SetKeyName(1, "disk.png");
+            // 
             // FrmMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.ControlLight;
+            BackColor = SystemColors.Info;
             ClientSize = new Size(1188, 670);
             Controls.Add(groupBox4);
             Controls.Add(groupBox5);
@@ -321,11 +339,12 @@
             Name = "FrmMain";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "이미지편집";
+            FormClosing += FrmMain_FormClosing_1;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
-            groupBox5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)TrbPenSize).EndInit();
+            groupBox5.ResumeLayout(false);
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             groupBox3.ResumeLayout(false);
@@ -359,5 +378,6 @@
         private GroupBox groupBox3;
         private CheckBox checkBox1;
         private GroupBox groupBox4;
+        private ImageList imageList1;
     }
 }
