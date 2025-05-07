@@ -280,7 +280,7 @@ iot 개발자 c#/WinApp 리포지토리 2025
 
 ## 3일차
 
-### Visual Studio Tio
+### Visual Studio Tip
 - 가장 많이 사용할 단축키 : Alt + Enter
 
 ### 한글 문제
